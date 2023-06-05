@@ -6,10 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Outcome.fs" />
-        <Compile Include="Action.fs" />
-        <Compile Include="Strategy.fs" />
-        <Compile Include="Scoring.fs" />
         <Compile Include="Program.fs" />
         <Content Include="input.txt">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
