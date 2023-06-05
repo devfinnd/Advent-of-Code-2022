@@ -1,11 +1,21 @@
 namespace RockPaperScissors.Actions
 
+open RockPaperScissors.Outcome
+
 type Action =
     | Rock
     | Paper
     | Scissor
 
 module Action =
+    let decide opponent player: Outcome  =
+        match opponent with
+            | Rock when player = Scissor -> Loose
+            | Paper when player = Rock -> Loose
+            | Scissor when player = Paper -> Loose
+            | _ when opponent = player -> Draw
+            | _ -> Win
+
     let parseOpponent input : Action =
         match input with
         | "A" -> Rock
