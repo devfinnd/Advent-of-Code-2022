@@ -1,34 +1,18 @@
 ﻿open System
 open System.IO
 
-type Rucksack(compartmentInput1: string, compartmentInput2: string) =
-    member this.Compartment1 = compartmentInput1 |> Array.ofSeq
+type Group(rucksack1: string, rucksack2: string, rucksack3: string) =
+    member this.Rucksack1 = rucksack1 |> Set.ofSeq
+    member this.Rucksack2 = rucksack2 |> Set.ofSeq
+    member this.Rucksack3 = rucksack3 |> Set.ofSeq
 
-    member this.Compartment2 = compartmentInput2 |> Array.ofSeq
+    static member getBadge (g: Group) = Set.intersectMany [g.Rucksack1; g.Rucksack2; g.Rucksack3] |> Seq.head
 
-    static member getDuplicates(rucksack: Rucksack) =
-        let set1 = Set.ofArray rucksack.Compartment1
-        let set2 = Set.ofArray rucksack.Compartment2
-        let intersection = Set.intersect set1 set2
+    static member parse(input: array<string>) : Group =
+        Group(input[0], input[1], input[2])
 
-        if intersection.Count <> 1 then
-            let dups = String.Join(",", intersection)
-            failwith $"too few or too many duplicates {dups}"
-
-        intersection
-
-    static member parse(input: string) : Rucksack =
-        let half = input.Length / 2
-        let compartment1 = input.Substring(0, half)
-        let compartment2 = input.Substring(half)
-
-        if compartment1.Length > compartment2.Length then
-            failwith "1 too large"
-
-        if compartment1.Length < compartment2.Length then
-            failwith "1 too small"
-
-        Rucksack(compartment1, compartment2)
+let getGroups input =
+    input |> Array.chunkBySize 3 |> Array.map Group.parse
 
 let offsetFrom (c: char) =
     let small = ['a' .. 'z']
@@ -41,17 +25,11 @@ let offsetFrom (c: char) =
 let charToAlphaInteger c =
     int c - offsetFrom c
 
-Console.WriteLine (charToAlphaInteger 'a')
-Console.WriteLine (charToAlphaInteger 'A')
-
 
 let sum =
     File.ReadAllLines "input.txt"
-    |> Array.map (
-        Rucksack.parse
-        >> Rucksack.getDuplicates
-        >> Seq.head
-        >> charToAlphaInteger
-    ) |> Array.sum
+    |> getGroups
+    |> Array.map (Group.getBadge >> charToAlphaInteger)
+    |> Array.sum
 
 Console.WriteLine sum
