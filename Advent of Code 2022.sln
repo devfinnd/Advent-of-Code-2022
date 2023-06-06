@@ -6,6 +6,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RockPaperScissors", "RockPa
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RucksackReorg", "RucksackReorg\RucksackReorg.fsproj", "{5BC538D2-EAEB-4997-9A65-A5C842562D45}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CampCleanup", "CampCleanup\CampCleanup.fsproj", "{3573BD2C-DAA7-4998-B613-F343B495DF2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{5BC538D2-EAEB-4997-9A65-A5C842562D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC538D2-EAEB-4997-9A65-A5C842562D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC538D2-EAEB-4997-9A65-A5C842562D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3573BD2C-DAA7-4998-B613-F343B495DF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3573BD2C-DAA7-4998-B613-F343B495DF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3573BD2C-DAA7-4998-B613-F343B495DF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3573BD2C-DAA7-4998-B613-F343B495DF2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
